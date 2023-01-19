@@ -1,3 +1,4 @@
+let gameActive
 let players;
 let stepCounter = 0;
 let markedCells;
@@ -37,6 +38,7 @@ function bindEvents() {
 }
 
 function askWhoStarts() {
+  gameActive = true;
   let starter = null;
   let message = null;
   while (starter != "X" && starter != "O") {
@@ -54,13 +56,20 @@ function askWhoStarts() {
 }
 
 function handleGameCellClick(cell, row, col) {
+  if(!gameActive) return;
   // let's write on the clicked cell
   cell.innerHTML = players[stepCounter % 2];
   // let's populate the game grid
   gameGrid[row][col] = players[stepCounter % 2];
-  let end = checkWinner();
+  // the followig call detects when a win occurs, displays messages and
+  // sets the gameActive flag to false if a win occurs.
+  checkWinner();
+  if (stepCounter >= 8) {
+    // say the game is over with no winner
+    alert("Game is over. No one wins.")
+    gameActive = false;
+  }
   stepCounter++;
-  return end;
 }
 
 function checkWinner() {
@@ -124,6 +133,7 @@ function endGame(cell1, cell2, cell3) {
   markedCells.forEach((value, index) => {
     value.classList.add("marked-cell");
   });
+  gameActive = false;
 }
 
 function restartGame() {
