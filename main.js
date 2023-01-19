@@ -56,7 +56,7 @@ function askWhoStarts() {
 }
 
 function handleGameCellClick(cell, row, col) {
-  if(!gameActive) return;
+  if(!gameActive || cell.innerHTML != "") return;
   // let's write on the clicked cell
   cell.innerHTML = players[stepCounter % 2];
   // let's populate the game grid
