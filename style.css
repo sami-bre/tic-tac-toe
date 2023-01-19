@@ -1,0 +1,20 @@
+.game-grid {
+    display: grid;
+    grid-template-areas: "11    12   13"
+                        "21   22   23"
+                        "31   32    33";
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    width: 300px;
+    height: 300px;
+}
+
+.game-cell {
+    width: 100px;
+    height: 100px;
+    border: 1px solid black;
+}
+
+.marked-cell {
+    border: 2px solid red;
+}
