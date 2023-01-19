@@ -64,7 +64,7 @@ function handleGameCellClick(cell, row, col) {
   // the followig call detects when a win occurs, displays messages and
   // sets the gameActive flag to false if a win occurs.
   checkWinner();
-  if (stepCounter >= 8) {
+  if (gameActive && stepCounter >= 8) {
     // say the game is over with no winner
     alert("Game is over. No one wins.")
     gameActive = false;
