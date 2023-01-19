@@ -8,6 +8,7 @@
 .title {
     margin: 1em auto;
     font-size: 3em;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .restart {
@@ -90,4 +91,26 @@
 
 .c22 {
     border-bottom-right-radius: 0.4em;
+}
+
+.emphasized {
+    font-size: 3em; 
+    animation: emphasized;
+    animation-duration: 1s;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+@keyframes emphasized {
+    30% {font-size: 3.3em;}
+    100% {font-size: 3em;}
+}
+
+.winner {
+    font-size: 2em;
+    display: block;
+    text-align: center;
+}
+
+.result {
+    text-align: center;
 }

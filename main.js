@@ -1,4 +1,4 @@
-let gameActive
+let gameActive;
 let players;
 let stepCounter = 0;
 let markedCells;
@@ -15,6 +15,7 @@ const c22 = document.querySelector(".c22");
 // it's nice to have all the cells in a single list
 const allCells = [c00, c01, c02, c10, c11, c12, c20, c21, c22];
 const restart = document.querySelector("#restart");
+const result = document.querySelector("#result");
 
 let gameGrid = [
   [null, null, null],
@@ -56,7 +57,7 @@ function askWhoStarts() {
 }
 
 function handleGameCellClick(cell, row, col) {
-  if(!gameActive || cell.innerHTML != "") return;
+  if (!gameActive || cell.innerHTML != "") return;
   // let's write on the clicked cell
   cell.innerHTML = players[stepCounter % 2];
   // let's populate the game grid
@@ -66,7 +67,8 @@ function handleGameCellClick(cell, row, col) {
   checkWinner();
   if (gameActive && stepCounter >= 8) {
     // say the game is over with no winner
-    alert("Game is over. No one wins.")
+    result.innerHTML = "No one wins.";
+    result.classList.add("emphasized");
     gameActive = false;
   }
   stepCounter++;
@@ -127,7 +129,10 @@ function checkWinner() {
 
 function endGame(cell1, cell2, cell3) {
   //say who won the game
-  alert(`${players[stepCounter % 2]} has won the game!`);
+  result.innerHTML = `<span class="winner">${
+    players[stepCounter % 2]
+  }</span> has won the game!`;
+  result.classList.add("emphasized");
   // mark the wining axis
   markedCells = [cell1, cell2, cell3];
   markedCells.forEach((value, index) => {
@@ -137,6 +142,16 @@ function endGame(cell1, cell2, cell3) {
 }
 
 function restartGame() {
+  // clear the UI
+  allCells.forEach((value, index) => {
+    value.classList.remove("marked-cell");
+    value.innerHTML = "";
+  });
+  stepCounter = 0;
+
+  result.innerHTML = "";
+  result.classList.remove("emphasized");
+
   // reset player preceedence
   players = [];
   askWhoStarts();
@@ -147,12 +162,6 @@ function restartGame() {
     [null, null, null],
     [null, null, null],
   ];
-  // reset visible grid
-  allCells.forEach((value, index) => {
-    value.classList.remove("marked-cell");
-    value.innerHTML = "";
-  });
-  stepCounter = 0;
 }
 
 function main() {
