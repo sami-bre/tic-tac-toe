@@ -60,3 +60,34 @@
     100% {background-color: rgb(146, 201, 146);}
 }
 
+.c00, .c01, .c02 {
+    border-top: none;
+}
+
+.c20, .c21, .c22 {
+    border-bottom: none;
+}
+
+.c00, .c10, .c20 {
+    border-left: none;
+}
+
+.c02, .c12, .c22 {
+    border-right: none;
+}
+
+.c00 {
+    border-top-left-radius: 0.4em;
+}
+
+.c02 {
+    border-top-right-radius: 0.4em;
+}
+
+.c20 {
+    border-bottom-left-radius: 0.4em;
+}
+
+.c22 {
+    border-bottom-right-radius: 0.4em;
+}
