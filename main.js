@@ -40,16 +40,16 @@ function bindEvents() {
 
 function askWhoStarts() {
   gameActive = true;
-  let starter = null;
+  let starter = "";
   let message = null;
-  while (starter != "X" && starter != "O") {
+  while (starter.toUpperCase() != "X" && starter.toUpperCase() != "O") {
     starter = prompt(
       `${message != null ? message : ""} Who should start? X or O?`
     );
     console.log(starter);
     message = "Please enter a valid value.";
   }
-  if (starter == "X") {
+  if (starter.toUpperCase() == "X") {
     players = ["X", "O"];
   } else {
     players = ["O", "X"];
